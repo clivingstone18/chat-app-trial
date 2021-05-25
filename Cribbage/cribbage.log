@@ -1,0 +1,13 @@
+deal,P0,[2C,2H,7C,QC,QD,KH]
+deal,P1,[AD,AH,TD,JS,QH,KC]
+discard,P0,[2C,QC]
+discard,P1,[JS,KC]
+starter,8H
+play,P0,2,2H
+play,P1,3,AD
+play,P0,13,QD
+play,P1,23,QH
+play,P0,30,7C
+play,P1,31,AH
+play,P0,10,KH
+play,P1,20,TD
