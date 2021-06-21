@@ -23,7 +23,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))/* srv react to browser */
+app.listen(port, () => console.log(`Listening on ${ PORT }`))/* srv react to browser */
 
 if (process.env.NODE_ENV === "production" ) {
   app.use(express.static(path.join(__dirname, 'client/build')));
