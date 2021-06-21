@@ -2,10 +2,11 @@ const express = require('express')
 const app = express()
 const port = process.env.PORT || 3000
 const cors = require("cors");
-
 const httpServer = require("http").createServer();
 const {addUser, removeUser, getUser, getUsersInRoom} = require("./users.js");
- 
+
+const io = require('socket.io')(port);
+
 const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://roomchatter123.herokuapp.com/']
 const corsOptions = {
   origin: function (origin, callback) {
@@ -19,9 +20,8 @@ const corsOptions = {
     }
   }
 }
-app.use(cors(corsOptions))
 
-const io = require('socket.io');
+app.use(cors(corsOptions))
 
 /* srv react to browser */
 
@@ -31,9 +31,6 @@ if (process.env.NODE_ENV === "production" ) {
     res.sendFile(path.join(__dirname, 'client/build', 'index.html'))
   })
 }
-
-
-
 
 /* runs when mr client connects */ 
 io.on("connection", (socket) => {
