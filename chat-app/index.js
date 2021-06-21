@@ -5,6 +5,7 @@ const cors = require("cors");
 const httpServer = require("http").createServer();
 const {addUser, removeUser, getUser, getUsersInRoom} = require("./users.js");
 
+
 const io = require('socket.io')(port);
 
 const whitelist = ['http://localhost:3000', 'http://localhost:4000', 'https://roomchatter123.herokuapp.com/']
@@ -22,8 +23,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-
-/* srv react to browser */
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`))/* srv react to browser */
 
 if (process.env.NODE_ENV === "production" ) {
   app.use(express.static(path.join(__dirname, 'client/build')));
